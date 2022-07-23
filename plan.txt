@@ -1,0 +1,27 @@
+But : faire une jeu de bataille navalle en python.
+
+- Faire la maps de chaque joeur (plateau de taille 10X10).
+- Préparer les != navires (3 navires !=).
+
+- there will are two setps to de game :
+	- step to positional boot.
+	- start game.
+
+- Files : 
+	- board   (check)
+        - build_board 1 et 2
+        - affiche_board 1 et 2
+        - affiche_place 1 et 2
+        - set_board 1 et |2| 
+	- winner
+        - ///
+	- boot 
+        - boot 1,
+        - boot 2,
+        - boot 3, 
+        - affiche_boot,
+        select_boot,
+	- move 
+        -///
+    - create_boot # a faire dans un second temps 
+        - ///
