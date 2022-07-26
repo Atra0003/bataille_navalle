@@ -1,6 +1,7 @@
 
 from board import BOARD
 
+TAILLE_PLATEAU = 10
 
 class BOOT_player:
     def __init__(self, board):
@@ -87,7 +88,7 @@ class BOOT_player:
         print()
         choix = input("votre choix : ")
         print()
-        cpt = 0
+        cpt, idx = 0, 0
         while choix != "y":
             if choix == "l":
                 idx = (cpt + 1) % len(list_boot)
@@ -105,34 +106,62 @@ class BOOT_player:
                 print("se caractère n'est pas valide")
                 choix = input("votre choix : ")
             cpt += 1
-        return list_boot[cpt]
-    """
+        return list_boot[idx]
+    
+    
     def is_in_board(self, pos):
         pos_l = pos[0]
         pos_c = pos[1]
-        if 0 <= pos[0] < 3 and 0 <= pos[1] < 3:
+        if 0 <= pos[0] < TAILLE_PLATEAU and 0 <= pos[1] < TAILLE_PLATEAU:
             return True
         else:
             return False
     
-    def checking(self):
+    def checking(self, boot, pos, board):
+        
+        check_place = True
+        for i in range(len(boot)):
+            for j in range(len(boot[0])):
+                char_boot = boot[i][j]
+                place = (pos[0]+i, pos[1]+j)
+                if self.is_in_board(place):
+                    char_board = self.board.affiche_place(place, board)
+                    if char_boot == "*" and char_board == "*":
+                        check_place = False
+                else:
+                    check_place = False
+        return (pos, check_place)
+    
+    
+    def select_emplacement(self):
         ligne = int(input("entrer la ligne de la board : "))
         colonne = int(input("entrer la colonne de la board : "))
         
-        self.is_in_board((ligne, colonne))
+        emplacement = self.is_in_board((ligne, colonne))
         
-        while :
-        return 
-
-    """
-    
-    def positionnement(self, boot):
-        #self.checking()
-        print("A")
+        while emplacement != True:
+            print("la position n'est pas bonne.")
+            print()
+            ligne = int(input("entrer la ligne de la board : "))
+            colonne = int(input("entrer la colonne de la board : "))
+            emplacement = self.is_in_board((ligne, colonne))
+        return (ligne, colonne)
+        
+            
+    def placement(self, boot, pos, board):
+        ret_checking = self.checking(boot, pos, board)
+        while ret_checking[1] != True:
+            print("Il y a une superposition de vos bâteau ou certaine")
+            print("ou des partie de votre bâteau sont hors du plateau.")
+            
+            self.select_emplacement()
+            
         for i in range(len(boot)):
             for j in range(len(boot[0])):
+                ligne = ret_checking[0][0] + i
+                colonne = ret_checking[0][1] + j
                 char = boot[i][j]
-                self.board.set_board((i, j), char)
+                self.board.set_board((ligne, colonne), char, board)
                 
                 
     
