@@ -2,7 +2,7 @@
 
 
 
-TAILLE_PLATEAU = 10
+TAILLE_PLATEAU = 5
 BOARD_ONE = 1
 BOARD_TWO = 2
 
@@ -59,6 +59,10 @@ class BOARD:
             self.__board_P1[place[0]][place[1]] = modif
         else:
             self.__board_P2[place[0]][place[1]] = modif
+            
+    def taille_p(self):
+        #print("%%%%",len(self.__board_P1))
+        return len(self.__board_P1)
     
 if __name__ == "__main__":
     B = BOARD()

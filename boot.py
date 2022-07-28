@@ -1,7 +1,7 @@
 
 from board import BOARD
 
-TAILLE_PLATEAU = 10
+TAILLE_PLATEAU = 5
 
 class BOOT_player:
     def __init__(self, board):
