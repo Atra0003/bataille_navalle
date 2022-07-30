@@ -7,8 +7,12 @@ from attack import ATTACK
 
 def main():
     # Création et affichage du plateau.
-    Board.build_board_p1()
-    Board.build_board_p2()
+    Board.build_board(1)
+    Board.build_board(2)
+    
+    Board.build_board(3)
+    Board.build_board(4)
+    
     Board.affiche_board_p1()
     
     ### Positionnement des bâteau. 
@@ -37,7 +41,9 @@ def main():
         #select_boot_4 = B.select_boot(boot_4, 4)
         #positionnement_boot4 = B.select_emplacement()
         #B.placement(select_boot_4, positionnement_boot4, i+1)
-        
+    
+    # lANCEMENT DE LA PARTIE
+    
     jeu()
 
 
@@ -57,9 +63,7 @@ def jeu():
             
         if ret_win != None:
             print("victoire du joueur : ", cpt_player)
-        print("%%%%%")
         cpt_player += 1
-        print(cpt_player)
     
     
         

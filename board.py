@@ -1,7 +1,3 @@
-
-
-
-
 TAILLE_PLATEAU = 5
 BOARD_ONE = 1
 BOARD_TWO = 2
@@ -12,22 +8,32 @@ class BOARD:
         self.__board_P1 = []
         self.__board_P2 = []
         
+        self.__board_v_p1 = []
+        self.__board_v_p2 = []
+        
     
-    def build_board_p1(self):
+    def build_board(self, B):
         for i in range(TAILLE_PLATEAU):
             elem = []
             for j in range(TAILLE_PLATEAU):
                 elem.append(0)
-            self.__board_P1.append(elem)
-        return self.__board_P1
-    
-    def build_board_p2(self):
-        for i in range(TAILLE_PLATEAU):
-            elem = []
-            for j in range(TAILLE_PLATEAU):
-                elem.append(0)
-            self.__board_P2.append(elem)
-        return self.__board_P2
+            if B == 1:
+                self.__board_P1.append(elem)
+            elif B == 2:
+                self.__board_P2.append(elem)
+            elif B == 3:
+                self.__board_v_p1.append(elem)
+            else:
+                self.__board_v_p2.append(elem)
+                
+        if B == 1:
+            return self.__board_P1
+        elif B == 2:
+            return self.__board_P2
+        elif B == 3:
+            return self.__board_v_p1
+        else:
+            return self.__board_v_p2
     
     def affiche_board_p1(self):
         print("  " + " -"*TAILLE_PLATEAU + "  " + " -"*TAILLE_PLATEAU)
