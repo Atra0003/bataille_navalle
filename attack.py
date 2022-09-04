@@ -18,7 +18,9 @@ class ATTACK:
         else:
             cpt_player : 1
             print("attaque du joueur", 2)
+            
         pos_attacked = self.__boot.select_emplacement()
+        
         if self.__board.affiche_place(pos_attacked, cpt_player) == "*":
             print()
             print("bateau toucher")
